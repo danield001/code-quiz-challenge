@@ -1,0 +1,16 @@
+.question {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+h1{
+    display: inline;
+}
+
+.time{
+    text-align: end;
+}
+
+header{
+    background-color: lightseagreen;
+    border-bottom: 5px solid darkgreen;
+}
