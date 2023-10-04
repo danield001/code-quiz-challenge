@@ -1,103 +1,3 @@
-<!--<!DOCTYPE html>
-
-<head>
-    <meta charset="UFT-8">
-    <title> Code Quiz </title>
-    <link rel="stylesheet" href="/assets/style.css">
-    <script defer src="./assets/script.js"></script>
-</head>
-
-<html>
-
-<header>
-    <h1> Click Here for Leaderboard </h2>
-    <h1 class="time" id="timer"> Time: </h2>
-</header>
-
-<body>
-<div>
-    <div>
-        <h2> Click to Start Quiz </h2>
-        <button id="start"> Start Now </button>
-    </div>
-    <div data-set="hidden" class="question-1 question" data-set="visible">
-        <h2> What is the capital of Thailand? </h2>
-        <button  id="button" value="false"> Bangkok </button> <br>
-        <button id="button" value="true"> Java </button> <br>
-        <button id="button" value="false"> Canberra </button> <br>
-        <button id="button" value="false"> Washington </button> <br>
-    </div>
-
-    <div data-set="hidden" class="question-2 question" data-set="hidden">
-        <h2> What is the capital of Thailand? </h2>
-        <button id="button" value="false"> Bangkok </button> <br>
-        <button id="button" value="false"> Java </button> <br>
-        <button id="button" value="true"> Canberra </button> <br>
-        <button id="button" value="false"> Washington </button> <br>
-    </div>
-
-    <div class="question-3 question" data-set="hidden">
-        <h2> What is the capital of Thailand? </h2>
-        <button id="button" value="true"> Bangkok </button> <br>
-        <button id="button" value="false"> Java </button> <br>
-        <button id="button" value="false"> Canberra </button> <br>
-        <button id="button" value="false"> Washington </button> <br>
-    </div>
-
-    <div data-set="hidden" class="question-4 question" data-set="hidden">
-        <h2> What is the capital of Thailand? </h2>
-        <button id="button" value="false"> Bangkok </button> <br>
-        <button id="button" value="false"> Java </button> <br>
-        <button id="button" value="true"> Canberra </button> <br>
-        <button id="button" value="false"> Washington </button> <br>
-    </div>
-
-    <div data-set="hidden" class="question-5 question" data-set="hidden">
-        <h2> What is the capital of Thailand? </h2>
-        <button id="button" value="false"> Bangkok </button> <br>
-        <button id="button" value="false"> Java </button> <br>
-        <button id="button" value="false"> Canberra </button> <br>
-        <button id="button" value="true"> Washington </button> <br>
-    </div>
-
-    <div data-set="hidden" class="question-6 question" data-set="hidden">
-        <h2> What is the capital of Thailand? </h2>
-        <button id="button" value="true"> Bangkok </button> <br>
-        <button id="button" value="false"> Java </button> <br>
-        <button id="button" value="false"> Canberra </button> <br>
-        <button id="button" value="false"> Washington </button> <br>
-    </div>
-    <div  data-set="hidden" class="end-page">
-        <h2> All Done! </h2>
-        <h3> Your Final Score is: </h3>
-        <input type="text" label="initials" placeholder="Type Initials for Leaderboard">
-        <button value="submit" id="submit"> Submit </button>
-    </div>
-</div>
-</body>
-
-
-</html>
-
-<body>
-    <div class="container">
-        <div id="question-container" class="hide"></div>
-        <div id="question"> </div>
-        <div id="answer-btns" class="btn-grid">
-            <button class="btn"> Answer 1 </button>
-            <button class="btn"> Answer 2 </button>
-            <button class="btn"> Answer 3 </button>
-            <button class="btn"> Answer 4 </button>
-        </div>
-        <div class="controls">
-            <button id="start-btn" class="start-btn btn"> Start </button>
-            <button id="next-btn" class="next-btn btn hide"> Next </button>
-        </div> 
-    </div>
-    </body>-->
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -105,15 +5,20 @@
     <meta charset="UFT-8">
     <title> Code Quiz </title>
     <link rel="stylesheet" href="/assets/style.css">
-    <script defer src="./assets/script.js"></script>
+    
 </head>
 
-<header>
-    <div> </div>
-    <div> </div>
-</header>
 
 <body>
+    <header>
+        <div class="header"> 
+                <a href="leaderboard.html"> View Leaderboard</a>
+             </div>
+
+        <div class="header time"> 
+            <h2> Time: </h2>
+        </div>
+    </header>
     <div id="start-screen" class="start">
         <h1> Coding Quiz Challenge </h1>
         <p> Answer the following questions relating to coding within the time limit.
@@ -121,11 +26,31 @@
         </p>
         <button id="start-btn"> Start Quiz </button>
     </div>
-
-    <div id="questions" class="hide">
+    
+    <div id="questions" class="questions hide">
         <h2 id="question-title"></h2>
         <div id="choices" class="choices"></div>
+        <div id="answer-correct" class="hide"> 
+            <hr/>
+            <h2> Correct </h2> 
+        </div>
+        <div id="answer-incorrect" class="hide"> 
+            <hr/>
+            <h2> Incorrect </h2> 
+        </div>
+       
     </div>
+
+    <div id="end-screen" class="end-screen hide">
+        <h2> Your Score: </h2>
+        <p>
+     Type your Initials for Leaderboard: </h3> <input type="text" id="initials" max="3">
+        <button class="submit"> Submit </button>
+        </p>
+    </div>
+    
+  
+    <script  src="./assets/script.js"></script>
 </body>
 
 <html></html>

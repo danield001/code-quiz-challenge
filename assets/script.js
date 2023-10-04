@@ -1,70 +1,12 @@
-/*var answer = document.getElementById("button");
-var timer = document.getElementById("timer");
-var start = document.getElementById("start");
-
-function init(){
-    if(element.matches("div")){
-        var state = element.getAttribute("data-state")
-
-        if (state === "hidden"){
-            element.display = none;
-        }
-    }
-
-    if(data-set === "hidden"){
-
-    }
-}
-
-
-function checkAnswer() {
-
-if (answer.value === "true"){
-    console.log("true");
-    
-}
-
-else {
-    console.log("false");
-}
-}
-
-
-function timerStart(){
-    let count = 0;
-    if (count < 70, count++){
-        timer.setAttribute = timer + count;
-    }
-    else (count > 70){
-        timer.setAttribute = "Time Up";
-    }
-} 1000;
-
-answer.addEventListener('click', checkAnswer);
-
-start.addEventListener('click', timerStart);
-
-
-
- const = document.getElementById('start-btn');
-
-
-function startGame(){
-
-}
-
-function setNextQuestion(){
-
-}
-
-function selectAnswer(){
-
-} */
-
-
-var questionTitle = document.getElementById("questions");
+var questionDiv = document.getElementById("questions");
+var questionTitle = document.getElementById("question-title");
 var startBtn = document.getElementById("start-btn");
-var time = questions.length * 15;
+var startScreen = document.getElementById("start-screen");
+var answerDisp = document.getElementById("answer");
+var choicesDiv = document.getElementById('choices');
+var answerCor = document.getElementById('answer-correct');
+var answerInc = document.getElementById('answer-incorrect');
+var endScreen = document.getElementById('end-screen');
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
@@ -94,17 +36,64 @@ var questions = [
 
 ];
 
+var time = questions.length * 15;
+var qPosition = 0
+function start() {
+
+    startScreen.classList.add('hide');
+
+    questionDiv.classList.remove('hide');
+    // add timer function
+
+
+    renderQuestion()
+}
+
 function renderQuestion() {
+    // render Question into Question Title
+    questionTitle.textContent = questions[qPosition].title
+    // create 4 buttons for answers
+    // if asnwer is true, display true
+    choicesDiv.innerHTML = ''
+    for (var i = 0; i < questions[qPosition].choices.length; i++) {
+        var answerBtn = document.createElement('button');
+        answerBtn.textContent = questions[qPosition].choices[i];
 
+        answerBtn.addEventListener('click', next)
 
+        choicesDiv.appendChild(answerBtn);
+    }
+    //if asnwer is false, dont proceed to next question, and deduct 15 seconds to timer
+}
 
-    for (var i = 0; i < questions.length; i++) {
-        questionTitle.textContent = questions[i];
+function next() {
+    console.log(this.textContent);
+    if (this.textContent === questions[qPosition].answer) {
+        console.log(true)
+        answerInc.classList.add('hide');
+        answerCor.classList.remove('hide');
+       
+
+    } else {
+        console.log(false);
+        answerCor.classList.add('hide');
+        answerInc.classList.remove('hide');
+        
+    }
+    qPosition++
+
+    if (qPosition < questions.length) {
+        renderQuestion()
+    } else {
+        questionDiv.classList.add('hide');
+        endScreen.classList.remove('hide');
 
 
     }
 }
 
-startBtn.addEventListener('click', renderQuestion);
+startBtn.addEventListener('click', start);
 
-nextBtn.addEventListener('click', renderQuestion);
+
+
+
