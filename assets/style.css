@@ -1,9 +1,18 @@
+html body{
+    width: 100vw;
+    margin: 0px;
+}
+
 .question {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 h1{
     display: inline;
+    padding-left: 10px;
+    padding-top: 20px;
+    font-size: 100%;
+
 }
 
 .time{
@@ -13,4 +22,20 @@ h1{
 header{
     background-color: lightseagreen;
     border-bottom: 5px solid darkgreen;
+    height: 50px;
+}
+
+div{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+
+button{
+    background-color: lightblue;
+    width: 100px;
+    border: 0px rounded;
+}
+
+button:hover {
+    background-color: aqua;
 }
