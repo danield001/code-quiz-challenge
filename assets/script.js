@@ -139,27 +139,7 @@ function saveScore() {
 
     localStorage.setItem('gameScore', JSON.stringify(score));
 
-    leaderboard()
-
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    var savedScores = document.getElementById('saved-scores');
-
-    function leaderboard() {
-        var score = JSON.parse(localStorage.getItem('gameScore'));
-        if (score) {
-            var listItem = document.createElement('li');
-            listItem.innerHTML = '<span>' + score.initials + '</span><span>' + score.count + '</span>';
-            savedScores.appendChild(listItem);
-        }
-    }
-
-    var leaderboardAccess = document.getElementById('leaderboard-btn');
-    leaderboardAccess.addEventListener('click', leaderboard);
-
-    leaderboard();
-});
 
 // event listeners
 startBtn.addEventListener('click', start);
