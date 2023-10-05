@@ -7,6 +7,7 @@ var choicesDiv = document.getElementById('choices');
 var answerCor = document.getElementById('answer-correct');
 var answerInc = document.getElementById('answer-incorrect');
 var endScreen = document.getElementById('end-screen');
+var countdown = document.getElementById('time');
 var questions = [
     {
         title: 'Commonly used data types DO NOT include:',
@@ -38,6 +39,12 @@ var questions = [
 
 var time = questions.length * 15;
 var qPosition = 0
+var initials = document.getElementById('initials');
+var submit = document.getElementById('submit');
+var timerText = document.getElementById('timer-text');
+let count = 0;
+
+//start visibility of questions div
 function start() {
 
     startScreen.classList.add('hide');
@@ -49,11 +56,35 @@ function start() {
     renderQuestion()
 }
 
+function timerStart() {
+
+
+    const timerText = document.getElementById('timer-text');
+
+    setInterval(() => {
+        if (count < time, qPosition < questions.length) {
+            count++;
+            timerText.textContent = count;
+        }
+
+        else {
+            questionDiv.classList.add('hide');
+            endScreen.classList.remove('hide');
+        }
+
+    }, 1000);
+
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const startBtn = document.getElementById('start-btn');
+    startBtn.addEventListener('click', timerStart);
+});
+
+// Render questions to div
 function renderQuestion() {
-    // render Question into Question Title
+
     questionTitle.textContent = questions[qPosition].title
-    // create 4 buttons for answers
-    // if asnwer is true, display true
+
     choicesDiv.innerHTML = ''
     for (var i = 0; i < questions[qPosition].choices.length; i++) {
         var answerBtn = document.createElement('button');
@@ -63,22 +94,25 @@ function renderQuestion() {
 
         choicesDiv.appendChild(answerBtn);
     }
-    //if asnwer is false, dont proceed to next question, and deduct 15 seconds to timer
+
 }
 
+// Checks if answer is true of false
 function next() {
     console.log(this.textContent);
     if (this.textContent === questions[qPosition].answer) {
         console.log(true)
         answerInc.classList.add('hide');
         answerCor.classList.remove('hide');
-       
+
 
     } else {
         console.log(false);
         answerCor.classList.add('hide');
         answerInc.classList.remove('hide');
-        
+        count += 15;
+
+
     }
     qPosition++
 
@@ -89,10 +123,49 @@ function next() {
         endScreen.classList.remove('hide');
 
 
+
     }
 }
 
+// Save score and initials to local storage 
+function saveScore() {
+
+    var score = {
+        count: count,
+        initials: initials.value
+    }
+
+    // save time score to the local storage
+
+    localStorage.setItem('gameScore', JSON.stringify(score));
+
+    leaderboard()
+
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    var savedScores = document.getElementById('saved-scores');
+
+    function leaderboard() {
+        var score = JSON.parse(localStorage.getItem('gameScore'));
+        if (score) {
+            var listItem = document.createElement('li');
+            listItem.innerHTML = '<span>' + score.initials + '</span><span>' + score.count + '</span>';
+            savedScores.appendChild(listItem);
+        }
+    }
+
+    var leaderboardAccess = document.getElementById('leaderboard-btn');
+    leaderboardAccess.addEventListener('click', leaderboard);
+
+    leaderboard();
+});
+
+// event listeners
 startBtn.addEventListener('click', start);
+startBtn.addEventListener('click', timerStart);
+submit.addEventListener('click', saveScore);
+
 
 
 

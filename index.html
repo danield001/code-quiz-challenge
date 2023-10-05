@@ -12,11 +12,11 @@
 <body>
     <header>
         <div class="header"> 
-                <a href="leaderboard.html"> View Leaderboard</a>
+                <a id="leaderboard-btn" href="leaderboard.html"> View Leaderboard</a>
              </div>
 
         <div class="header time"> 
-            <h2> Time: </h2>
+            <h2> Time:<span id="timer-text"> 0 </span></h2>
         </div>
     </header>
     <div id="start-screen" class="start">
@@ -45,7 +45,9 @@
         <h2> Your Score: </h2>
         <p>
      Type your Initials for Leaderboard: </h3> <input type="text" id="initials" max="3">
-        <button class="submit"> Submit </button>
+     <a href="leaderboard.html">
+        <button id="submit" class="submit"> Submit </button>
+     </a>
         </p>
     </div>
     
